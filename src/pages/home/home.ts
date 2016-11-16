@@ -14,9 +14,9 @@ export class HomePage {
   countryRef: any;
 
   constructor(public navCtrl: NavController) {
-    this.countryRef = firebase.database().ref('/');
+    this.countryRef = firebase.database().ref('/countries');
 
-    this.countryRef.child('countries').on('value', countryList => {
+    this.countryRef.on('value', countryList => {
       let countries = [];
       countryList.forEach( country => {
         countries.push(country.val());
