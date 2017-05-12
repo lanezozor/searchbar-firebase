@@ -9,9 +9,9 @@ import firebase from 'firebase';
   templateUrl: 'home.html'
 })
 export class HomePage {
-  countryList: any;
-  loadedCountryList: any;
-  countryRef: any;
+  public countryList:Array<any>;
+  public loadedCountryList:Array<any>;
+  public countryRef:firebase.database.Reference;
 
   constructor(public navCtrl: NavController) {
     this.countryRef = firebase.database().ref('/countries');
@@ -20,6 +20,7 @@ export class HomePage {
       let countries = [];
       countryList.forEach( country => {
         countries.push(country.val());
+        return false;
       });
 
       this.countryList = countries;
